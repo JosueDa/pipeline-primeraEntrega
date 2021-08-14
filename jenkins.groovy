@@ -17,7 +17,7 @@ def runner = { commandToExecute -> isUnix() ? sh(commandToExecute) : bat(command
 
 unitTest:{
     stage("Unit Testing"){
-        node("NewNode"){
+        node("principal"){
             checkoutApi("tests")
             runner 'cd tests && mvn test'
         }
@@ -25,7 +25,7 @@ unitTest:{
 }
 SonarQube:{
     stage("SonarQube"){
-        node("NewNode"){
+        node("principal"){
             checkoutTesting("tests")
             runner 'cd tests && mvn clean verify sonar:sonar -Dsonar.login=%token%'
         }
