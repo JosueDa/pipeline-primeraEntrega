@@ -27,7 +27,7 @@ SonarQube:{
     stage("SonarQube"){
         node("NewNode"){
             checkoutTesting("tests")
-            runner 'cd tests && mvn clean verify sonar:sonar -Dsonar.login=8b63209fb27d32eed2fde95b5ee712cfd0fc179b'
+            runner 'cd tests && mvn clean verify sonar:sonar -Dsonar.login=%token%'
         }
     }
 }
